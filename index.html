@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Задача з фізики — Механічний рух</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body style="font-family:sans-serif; padding:2em; background:#f4f4f4;">
+  <h2>🔬 Обчисли швидкість</h2>
+
+  <label for="distance">Введи відстань (м):</label><br>
+  <input id="distance" type="number" placeholder="наприклад 120" /><br><br>
+
+  <label for="time">Введи час (с):</label><br>
+  <input id="time" type="number" placeholder="наприклад 10" /><br><br>
+
+  <button py-click="calculate()">Обчислити</button>
+  <p id="result" style="font-weight:bold;"></p>
+
+  <py-script>
+    def calculate():
+        try:
+            d = float(Element("distance").value)
+            t = float(Element("time").value)
+            if t == 0:
+                Element("result").element.innerText = "Час не може бути 0"
+            else:
+                v = d / t
+                Element("result").element.innerText = f"Швидкість: {v:.2f} м/с"
+        except:
+            Element("result").element.innerText = "Будь ласка, введи числові значення"
+  </py-script>
+</body>
+</html>
